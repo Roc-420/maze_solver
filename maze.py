@@ -1,11 +1,20 @@
 import csv
-from colorama import Fore
+from colorama import Back, Style
 from random import randrange
 from emoji import emojize
+import os
+while True:
+    l = input("enter the name of the txt file:    ")
+    if os.path.exists(l):
+        break
+    else:
+        print("invalid filename!!!")
+
+
 def get_maze(): # converts maze txt into array
     lister = []
     temp_row=[]
-    txt = open('maze1.txt','r')
+    txt = open(l,'r')
     content = txt.readlines()
     txt.close()
     for row in content:
@@ -23,8 +32,16 @@ mazes = get_maze()
 def print_maze(maze):
     for row in maze:
         for item in row:
-            print(item,end="")
-        print("")
+            if item =="#":
+                print(Back.BLACK+ " ",end="")
+            elif item =="&":
+                print(Back.RED + " ",end="")
+            elif item == "A":
+                print(Back.BLUE + " ",end="")
+            else:
+                print(Back.WHITE + " ",end="")
+                
+        print(Style.RESET_ALL)
 
 
 def possible_moves(point_y,point_x, maze):
@@ -38,9 +55,7 @@ def possible_moves(point_y,point_x, maze):
         possible.append("left")
     if maze[point_y][point_x + 1] == ' ':
         possible.append("right")
-        possible.append("right")
-        possible.append("right")
-   
+
 
     return possible
 
@@ -88,26 +103,27 @@ solved = False
 def bot_loop():
     while True:
         mazes = get_maze()
-        maze, current_y, current_x= find_path(mazes,11,1)
+        maze, current_y, current_x= find_path(mazes,( len(mazes) -2  ),1)
         if maze[(current_y + -1 )][current_x] == 'A': # one above current point
-            print("win!!")
+            print("solved!!")
             print_maze(maze)
             break
 
         if  maze[(current_y + 1 )][current_x] == 'A':
             print_maze(maze)
-            print("win!!")
+            print("solved!!")
             break
 
         if maze[current_y][current_x - 1 ] == 'A':
             print_maze(maze)
-            print("win!!")
+            print("solved!!")
             break
             
 
         if maze[current_y][current_x+1] == 'A':
             print_maze(maze)
-            print("win!!")
+            print("solved!!")
             break
      
+
 bot_loop()
