@@ -1,6 +1,6 @@
 import csv
 from colorama import Fore
-
+from random import randrange
 def get_maze(): # converts maze txt into array
     lister = []
     temp_row=[]
@@ -37,3 +37,20 @@ def possible_moves(point_y,point_x, maze):
 
     return possible
 
+def choose_move(possible):
+    amount = len(possible)
+    choice = randrange(0,amount)
+    final = possible[choice]
+    return final
+
+
+mazes[3][5] = "&"
+for row in mazes:
+    print(row)
+
+
+
+l2 = possible_moves(3,5,mazes)
+print(l2)
+ce = choose_move(l2)
+print(ce)
