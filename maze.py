@@ -125,5 +125,11 @@ def bot_loop():
             print("solved!!")
             break
      
-
+            
 bot_loop()
+print("Destination: " + ( Back.BLUE + " "),end="")
+
+print(Style.RESET_ALL)
+print("Path  " + (Back.RED + " ") ,end="")
+
+print(Style.RESET_ALL)
