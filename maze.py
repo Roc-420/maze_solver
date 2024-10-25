@@ -130,6 +130,6 @@ bot_loop()
 print("Destination: " + ( Back.BLUE + " "),end="")
 
 print(Style.RESET_ALL)
-print("Path  " + (Back.RED + " ") ,end="")
+print("Path:  " + (Back.RED + " ") ,end="")
 
 print(Style.RESET_ALL)
